@@ -17,7 +17,7 @@ LOGS_DIR = ROOT_DIR / "logs"
 MODELS_DIR = ROOT_DIR / "models"
 
 #模型设置
-BATCH_SIZE = 32  #64过大会退出
+BATCH_SIZE = 64  #64过大会退出
 DIM_MODEL = 128 #d_model 特征维度
 N_HEADS = 8
 NUM_ENCODER_LAYERS = 2

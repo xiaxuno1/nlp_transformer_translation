@@ -67,7 +67,7 @@ class TranslationModel(nn.Module):
         """
         embedded = self.zh_embedding(src)
         embedded = self.pos(embedded) # +位置编码
-        return self.transformer.forward(src=embedded, src_key_padding_mask=src_pad_mask)
+        return self.transformer.encoder(src=embedded, src_key_padding_mask=src_pad_mask)
 
     def decode(self, tgt, memory, tgt_mask, momory_pad_mask):
         """
@@ -82,7 +82,7 @@ class TranslationModel(nn.Module):
         embedded = self.pos(embedded)
 
         output = self.transformer.decoder(tgt=embedded, memory=memory,
-                                          tgt_mask=tgt_mask,memory_mask=momory_pad_mask)
+                                          tgt_mask=tgt_mask,memory_key_padding_mask=momory_pad_mask)
         outputs = self.linear(output)
 
         return outputs
